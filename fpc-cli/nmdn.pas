@@ -65,7 +65,6 @@ begin
     end;
     writeln('For the given number of iterations, no root was found with Eps precision');
   end
-  end
   else if answer = '2' then
   begin
     count := 0;
