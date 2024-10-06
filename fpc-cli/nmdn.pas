@@ -42,29 +42,29 @@ begin
     x := b;
     if f(x) * f2p(x) < 0 then
       x := a;
-    if f(x) * f2p(x) > 0 then
+    if f(x) * f2p(x) < 0 then
     begin
-      for i := 1 to Kmax do
+      writeln('For a given equation, the convergence of Newton''s method is not guaranteed');
+    end;
+    for i := 1 to Kmax do
+    begin
+      count := count + 1;
+      if fp(x) = 0 then
       begin
-        count := count + 1;
-        if fp(x) = 0 then
-        begin
-          writeln('Unable to calculate the derivative at x = ', x, ' Try different interval');
-          exit;
-        end;
-        Dx := f(x) / fp(x);
-        x := x - Dx;
-        if abs(Dx) <= Eps then
-        begin
-          writeln('Root: ', x:0:10);
-          writeln('Iterations: ', count);
-          exit;
-        end;
+        writeln('Unable to calculate the derivative at x = ', x, ' Try different interval');
+        exit;
       end;
-      writeln('For the given number of iterations, no root was found with Eps precision');
-    end
-    else
-      writeln('For a given equation, the convergence of Newton''s method is not guaranteed')
+      Dx := f(x) / fp(x);
+      x := x - Dx;
+      if abs(Dx) <= Eps then
+      begin
+        writeln('Root: ', x:0:10);
+        writeln('Iterations: ', count);
+        exit;
+      end;
+    end;
+    writeln('For the given number of iterations, no root was found with Eps precision');
+  end
   end
   else if answer = '2' then
   begin
